@@ -9,7 +9,7 @@
 
 <body>
     <h1 id="heading" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Найди спрятанное сокровище!</h1>
-    <button id="opis">Описание</button>
+    <button id="opis">Описание</button><br><hr>
     <img id="map" width=400 height=400 src="treasuremap.webp">
     <p id="distance" style="font-family: Verdana, Geneva, Tahoma, sans-serif;"></p>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
@@ -54,7 +54,7 @@
             x: getRandomNumber(width),
             y: getRandomNumber(height)
         };
-        
+
         $("#map").click((event) => {
             clicks++;
             var distanceHint = getDistanceHint(getDistance(event, target));
