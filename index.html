@@ -9,7 +9,8 @@
 
 <body>
     <h1 id="heading" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Найди спрятанное сокровище!</h1>
-    <button id="opis">Описание</button><br><hr>
+    <button id="opis">Описание</button><br>
+    <hr>
     <img id="map" width=400 height=400 src="treasuremap.webp">
     <p id="distance" style="font-family: Verdana, Geneva, Tahoma, sans-serif;"></p>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
@@ -18,18 +19,20 @@
         #opis {
             border-radius: 25%;
             border: gray;
+            background-color: gray;
             font-size: large;
             text-align: center;
         }
+
         #opis:active {
-            background-color: gray;
+            background-color: rgb(243, 240, 240);
             border-radius: 25%;
             border: gray;
             font-size: large;
             text-align: center;
         }
     </style>
-    
+
     <script>
         var getRandomNumber = function (size) {
             return Math.floor(Math.random() * size);
@@ -41,24 +44,74 @@
             return Math.sqrt((diffX * diffX) + (diffY * diffY));
         };
 
+        let lastHint = ""
+        let repeatedClicks = 0
         var getDistanceHint = function (distance) {
             if (distance < 8) {
-                alert("Найдено сокровище в " + clicks + " кликов!");
                 return "Ты подебил! Рестартни, чтобы перезапустить."
+                alert("Найдено сокровище в " + clicks + " кликов!");
             }
+
+            if (repeatedClicks == 5) {
+                alert("Ищи в другом месте, дибила кусок!")
+                repeatedClicks = 0
+            }
+
             else if (distance < 10) {
+                if (lastHint == "<10") { 
+                    repeatedClicks++ 
+                } else {
+                    repeatedClicks = 0
+                }
+                lastHint = "<10"
                 return "МЕГА ГОРЯЧО!!!";
             } else if (distance < 20) {
+                if (lastHint == "<20") { 
+                    repeatedClicks++ 
+                } else {
+                    repeatedClicks = 0
+                }
+                lastHint = "<20"
                 return "Очень горячо!";
             } else if (distance < 40) {
+                if (lastHint == "<40") { 
+                    repeatedClicks++ 
+                } else {
+                    repeatedClicks = 0
+                }
+                lastHint = "<40"
                 return "Горячо!";
             } else if (distance < 80) {
+                if (lastHint == "<80") { 
+                    repeatedClicks++ 
+                } else {
+                    repeatedClicks = 0
+                }
+                lastHint = "<80"
                 return "Тепло";
             } else if (distance < 160) {
+                if (lastHint == "<160") { 
+                    repeatedClicks++ 
+                } else {
+                    repeatedClicks = 0
+                }
+                lastHint = "<160"
                 return "Холодно!";
             } else if (distance < 320) {
+                if (lastHint == "<320") { 
+                    repeatedClicks++ 
+                } else {
+                    repeatedClicks = 0
+                }
+                lastHint = "<320"
                 return "Очень холодно!";
             } else {
+                if (lastHint == "else") { 
+                    repeatedClicks++ 
+                } else {
+                    repeatedClicks = 0
+                }
+                lastHint = "else"
                 return "МЕГА ХОЛОДНО!";
             }
         };
