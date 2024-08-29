@@ -50,8 +50,8 @@
         let temp = document.getElementById("temp")
         var getDistanceHint = function (distance) {
             if (distance < 8) {
-                return "Ты подебил! Рестартни, чтобы перезапустить."
                 alert("Найдено сокровище в " + clicks + " кликов!");
+                return "Ты подебил! Рестартни, чтобы перезапустить."
             }
 
             if (repeatedClicks == 5) {
@@ -102,7 +102,7 @@
                     repeatedClicks = 0
                 }
                 lastHint = "<160"
-                temp.src = "thermometer_warm1.png"
+                temp.src = "cold.png"
                 return "Холодно!";
             } else if (distance < 320) {
                 if (lastHint == "<320") { 
@@ -111,7 +111,7 @@
                     repeatedClicks = 0
                 }
                 lastHint = "<320"
-                temp.src = "thermometer_warm1.png"
+                temp.src = "thermometer_cold.png"
                 return "Очень холодно!";
             } else {
                 if (lastHint == "else") { 
@@ -120,7 +120,7 @@
                     repeatedClicks = 0
                 }
                 lastHint = "else"
-                temp.src = "thermometer_warm1.png"
+                temp.src = "thermometer_cold.png"
                 return "МЕГА ХОЛОДНО!";
             }
         };
